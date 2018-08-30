@@ -196,6 +196,7 @@ label {
 .newNote-form {
   display: flex;
   flex-direction: column;
+  height: 500px;
 }
 
 .textBody-input {
@@ -307,6 +308,9 @@ label {
 }
 .edit-textBody {
   min-height: 300px;
+}
+.noteBody {
+  height: 430px;
 }
 .edit-context {
   height: 230px;

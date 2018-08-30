@@ -63,7 +63,9 @@ class NoteDetails extends Component {
     }
 
     if (tags) {
-      this.props.editNoteWithTag(this.props.match.params.id, note)
+      this.props.editNoteWithTag(this.props.match.params.id, note, () => {
+        this.props.history.push(`/`)
+      })
     }
     this.editToggle()
     this.props.history.push(`/`)
@@ -202,13 +204,15 @@ class NoteDetails extends Component {
           <div onClick={this.editToggle} className='detail-div'>
             <h1 className='title-header'>{this.props.note.title}</h1>
             <p className='noteBody'>{this.props.note.context}</p>
-            {tags.map((tag, index) => {
-              return (
-                <div className='fas fa-tags' key={tag + index}>
-                  {tag}
-                </div>
-              )
-            })}
+            <div>
+              {tags.map((tag, index) => {
+                return (
+                  <div className='fas fa-tags' key={tag + index}>
+                    {tag}
+                  </div>
+                )
+              })}
+            </div>
           </div>
         </div>
       </div>

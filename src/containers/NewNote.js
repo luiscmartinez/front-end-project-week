@@ -24,7 +24,7 @@ class NewNote extends Component {
   }
 
   renderArea = (field) => {
-    return <textarea {...field.input} />
+    return <textarea className='noteBody' {...field.input} />
   }
 
   handlePost = (values) => {

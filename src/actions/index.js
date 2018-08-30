@@ -128,7 +128,6 @@ export const copyNote = (note, token, cb) => {
     dispatch({ type: POSTING, payload: true })
     request
       .then((res) => {
-        console.log('IN POST NOT CONTROLLOWE', res.data)
         dispatch({
           type: GET_NOTES,
           payload: res.data
