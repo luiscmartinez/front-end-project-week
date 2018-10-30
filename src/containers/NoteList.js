@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { fetchNotes } from '../actions'
 import Loading from '../components/Loading'
 import NoteCard from '../components/NoteCard'
+import axios from 'axios'
 
 class NoteList extends Component {
   componentDidMount () {
@@ -11,7 +12,27 @@ class NoteList extends Component {
     this.props.fetchNotes(token)
   }
 
+  deleteAll = (cb) => {
+    const token = localStorage.getItem('token')
+    console.log(token)
+    axios
+      .delete(`http://localhost:8000/auth/delete_all`, {
+        headers: {
+          authorization: token
+        }
+      })
+      .then((deletedCount) => {
+        this.props.fetchNotes(token)
+      })
+      .catch((err) => console.log(err))
+  }
+
+  helperFun = () => {
+    this.props.history.push('/')
+  }
+
   render () {
+    console.log(this.props)
     if (!this.props.notes) {
       return <div>waiting for notes</div>
     }
@@ -35,7 +56,10 @@ class NoteList extends Component {
               value={this.props.search}
               onChange={this.props.handleChange}
             />
-            <div className='clear-Btn' onClick={this.props.handleClear}>
+            <div
+              className='clear-Btn'
+              onClick={() => this.deleteAll(this.helperFun)}
+            >
               Clear
             </div>
           </div>

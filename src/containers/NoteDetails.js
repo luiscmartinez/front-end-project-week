@@ -14,6 +14,7 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'
 class NoteDetails extends Component {
   constructor (props) {
     super(props)
+    console.log('in HEWEERRE DETSILS')
     this.props.getNote(this.props.match.params.id, () => {
       this.props.history.push(`/notes/${this.props.match.params.id}`)
     })
@@ -78,7 +79,6 @@ class NoteDetails extends Component {
     this.setState({ title: this.props.note.title })
   }
   handleClone = (e) => {
-    e.preventDefault()
     const token = localStorage.getItem('token')
     const { title, context, tags } = this.state
     const note = { title, context, tags }

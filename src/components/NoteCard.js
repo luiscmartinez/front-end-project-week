@@ -1,7 +1,7 @@
 import React from 'react'
 import { getNote } from '../actions'
 import { connect } from 'react-redux'
-import Markdown from 'markdown-to-jsx'
+// import Markdown from 'markdown-to-jsx'
 
 const NoteCard = (props) => {
   const note = props.note
@@ -14,20 +14,22 @@ const NoteCard = (props) => {
   return (
     <div key={note.id} className='myLink' onClick={() => handleDetails()}>
       <div className='cardTitle'>
-        {note.title.length > 15 ? (
+        {/* {note.title.length > 15 ? (
           note.title.substr(0, 14) + ' ...'
         ) : (
           note.title
-        )}
+        )} */}
       </div>
       <div className='cardBody'>
-        <Markdown>
-          {note.context.length > 100 ? (
+        {/* <Markdown> */}
+        {/* {note.context.length > 100 ? (
             note.context.substr(0, 99) + ' ...'
           ) : (
             note.context
-          )}
-        </Markdown>
+          )} */}
+        {/* {note.context} */}
+        {/* </Markdown> */}
+        {note.textBody}
       </div>
       <div className='card-tags'>
         <div className=''>

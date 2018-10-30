@@ -39,7 +39,7 @@ class SideNav extends Component {
         <Link className='sidenav-button' to='/'>
           View Your Notes
         </Link>
-        <Link className='sidenav-button' to='/notes/new'>
+        <Link className='sidenav-button' to='/new'>
           + Create New Note
         </Link>
         <ul>

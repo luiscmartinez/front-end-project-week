@@ -25,7 +25,6 @@ class App extends Component {
   }
 
   render () {
-    console.log(this.state.search)
     return (
       <div className='App'>
         <SideNav
@@ -33,7 +32,11 @@ class App extends Component {
           getTag={this.getTag}
           handleClear={this.handleClear}
         />
+        <Route path='/new' component={NewNote} />
+
         <Switch>
+          <Route path='/new' component={NewNote} />
+
           <Route
             exact
             path='/'
@@ -46,7 +49,6 @@ class App extends Component {
               />
             )}
           />
-          <Route path='/notes/new' component={NewNote} />
           <Route path='/notes/:id' component={NoteDetails} />
           <Route component={NoMatch} />
         </Switch>

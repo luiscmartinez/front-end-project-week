@@ -1,6 +1,6 @@
 import axios from 'axios'
-const url = `https://shyne-notes.herokuapp.com`
-// const url = `http://localhost:8000`
+// const url = `https://shyne-notes.herokuapp.com`
+const url = `https://fe-notes.herokuapp.com/note/`
 
 export const GET_NOTES = 'GET_NOTES'
 export const FETCHING = 'FETCHING'
@@ -27,7 +27,7 @@ const flatten = function (arr, result = []) {
 }
 
 export const fetchNotes = (token) => {
-  const request = axios.get(`${url}/auth/notes`, {
+  const request = axios.get(`${url}get/all`, {
     headers: {
       authorization: token
     }
@@ -60,7 +60,7 @@ export const getNote = (id, cb) => {
 }
 
 export const deleteNote = (id, cb) => {
-  const request = axios.delete(`${url}/auth/delete/${id}`)
+  const request = axios.delete(`${url}delete/${id}`)
   return (dispatch) => {
     dispatch({ type: DELETING, payload: true })
     request
@@ -76,7 +76,7 @@ export const deleteNote = (id, cb) => {
 }
 
 export const postNote = (note, token, cb) => {
-  const request = axios.post(`${url}/auth/create`, note, {
+  const request = axios.post(`${url}create`, note, {
     headers: {
       authorization: token
     }
@@ -125,9 +125,9 @@ export const copyNote = (note, token, cb) => {
     }
   })
   return (dispatch) => {
-    dispatch({ type: POSTING, payload: true })
     request
       .then((res) => {
+        console.log('IN POST NOT CONTROLLOWE', res.data)
         dispatch({
           type: GET_NOTES,
           payload: res.data

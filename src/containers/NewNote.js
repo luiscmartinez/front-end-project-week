@@ -1,49 +1,54 @@
-import Markdown from 'markdown-to-jsx'
 import React, { Component } from 'react'
-import { Field, reduxForm } from 'redux-form'
-import { connect } from 'react-redux'
-import { postNote } from '../actions'
+// import { Field, reduxForm } from 'redux-form'
+// import { connect } from 'react-redux'
+// import { postNote } from '../actions'
 
 class NewNote extends Component {
-  renderField = (field) => {
-    const { touched, error } = field.meta
-    const className = `form-group ${touched && error ? 'has-danger' : ''}`
-    return (
-      <div className={className}>
-        <input
-          className='form-control'
-          type={field.type}
-          placeholder={field.placeholder}
-          {...field.input}
-        />
-        <div className='text-help' style={{ color: 'red' }}>
-          {touched ? error : ''}
-        </div>
-      </div>
-    )
+  constructor (props) {
+    super(props)
+    console.log('in cons')
   }
 
-  renderArea = (field) => {
-    return <textarea className='noteBody' {...field.input} />
-  }
+  // renderField = (field) => {
+  //   const { touched, error } = field.meta
+  //   const className = `form-group ${touched && error ? 'has-danger' : ''}`
+  //   return (
+  //     <div className={className}>
+  //       <input
+  //         className='form-control'
+  //         type={field.type}
+  //         placeholder={field.placeholder}
+  //         {...field.input}
+  //       />
+  //       <div className='text-help' style={{ color: 'red' }}>
+  //         {touched ? error : ''}
+  //       </div>
+  //     </div>
+  //   )
+  // }
 
-  handlePost = (values) => {
-    console.log(values)
-    const token = localStorage.getItem('token')
-    this.props.postNote(values, token, () => {
-      this.props.history.push('/')
-    })
-  }
+  // renderArea = (field) => {
+  //   return <textarea className='noteBody' {...field.input} />
+  // }
 
-  onSubmit = (values) => {
-    this.handlePost(values)
-  }
+  // handlePost = (values) => {
+  //   console.log(values)
+  //   const token = localStorage.getItem('token')
+  //   this.props.postNote(values, token, () => {
+  //     this.props.history.push('/')
+  //   })
+  // }
+
+  // onSubmit = (values) => {
+  //   this.handlePost(values)
+  // }
 
   render () {
-    const { handleSubmit } = this.props
+    console.log('in construc')
+    // const { handleSubmit } = this.props
     return (
       <div className='newNote-container'>
-        <Markdown>#Create New Note:</Markdown>
+        {/* <Markdown>#Create New Note:</Markdown>
         <form
           className='newNote-form'
           type='submit'
@@ -60,13 +65,15 @@ class NewNote extends Component {
           <Field name='context' component={this.renderArea} />
 
           <button className='save-Btn'>Save</button>
-        </form>
+        </form> */}
+        hello
       </div>
     )
   }
 }
 
-export default reduxForm({
-  // validate,
-  form: 'newNoteForm'
-})(connect(null, { postNote })(NewNote))
+// export default reduxForm({
+//   // validate,
+//   form: 'newNoteForm'
+// })(connect(null, { postNote })(NewNote))
+export default NewNote
